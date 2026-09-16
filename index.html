@@ -18,26 +18,32 @@
         body {
             font-family: Arial, sans-serif;
             background: #f5f8fc;
-            color: #1c2738;
+            color: #172033;
         }
 
-        /* NAVBAR */
+        /* ================= NAVBAR ================= */
 
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             padding: 18px 8%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+
             box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+
             z-index: 1000;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 900;
             color: #ffcb05;
             text-shadow: 2px 2px #2a4f9b;
@@ -51,15 +57,16 @@
 
         nav a {
             text-decoration: none;
-            color: #1c2738;
+            color: #172033;
             font-weight: bold;
+            transition: 0.3s;
         }
 
         nav a:hover {
             color: #e63946;
         }
 
-        /* HERO */
+        /* ================= HERO ================= */
 
         .hero {
             min-height: 100vh;
@@ -70,8 +77,16 @@
             justify-content: space-between;
 
             background:
-                radial-gradient(circle at 80% 20%, #ffdd4a, transparent 25%),
-                linear-gradient(135deg, #fffef2, #dff2ff);
+                radial-gradient(
+                    circle at 80% 20%,
+                    #ffdd4a,
+                    transparent 25%
+                ),
+                linear-gradient(
+                    135deg,
+                    #fffef2,
+                    #dff2ff
+                );
         }
 
         .hero-text {
@@ -107,12 +122,18 @@
         .btn {
             display: inline-block;
             padding: 15px 28px;
+
             background: #ffcb05;
-            color: #18202d;
+            color: #172033;
+
             border-radius: 10px;
+
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 8px 20px rgba(255,203,5,0.35);
+
+            box-shadow:
+                0 8px 20px rgba(255,203,5,0.35);
+
             transition: 0.3s;
         }
 
@@ -120,11 +141,12 @@
             transform: translateY(-5px);
         }
 
-        /* POKEBALL */
+        /* ================= POKEBALL ================= */
 
         .pokeball {
             width: 350px;
             height: 350px;
+
             border-radius: 50%;
 
             background:
@@ -132,17 +154,18 @@
                     to bottom,
                     #e63946 0%,
                     #e63946 46%,
-                    #1c2738 46%,
-                    #1c2738 54%,
+                    #172033 46%,
+                    #172033 54%,
                     white 54%,
                     white 100%
                 );
 
-            border: 15px solid #1c2738;
+            border: 15px solid #172033;
 
             position: relative;
 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            box-shadow:
+                0 25px 50px rgba(0,0,0,0.2);
 
             animation: floating 3s infinite ease-in-out;
         }
@@ -159,7 +182,27 @@
 
             background: white;
 
-            border: 12px solid #1c2738;
+            border: 12px solid #172033;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+        }
+
+        .pokeball::after {
+            content: "";
+
+            position: absolute;
+
+            width: 35px;
+            height: 35px;
+
+            border-radius: 50%;
+
+            background: #ffcb05;
+
+            border: 5px solid #172033;
 
             left: 50%;
             top: 50%;
@@ -176,10 +219,9 @@
             50% {
                 transform: translateY(-20px);
             }
-
         }
 
-        /* GENERAL SECTION */
+        /* ================= SECTION ================= */
 
         section {
             padding: 100px 8%;
@@ -204,7 +246,7 @@
             color: #788598;
         }
 
-        /* ABOUT */
+        /* ================= ABOUT ================= */
 
         .about {
             display: grid;
@@ -229,7 +271,9 @@
             background: white;
             padding: 35px;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(40,70,100,0.1);
+
+            box-shadow:
+                0 15px 40px rgba(40,70,100,0.1);
         }
 
         .info-box h3 {
@@ -246,7 +290,7 @@
             border-bottom: 1px solid #eee;
         }
 
-        /* TYPES */
+        /* ================= TYPES ================= */
 
         .types {
             background: #eef5fb;
@@ -254,52 +298,100 @@
 
         .type-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+
+            grid-template-columns: repeat(6, 1fr);
+
+            gap: 18px;
         }
 
         .type-card {
             background: white;
-            padding: 30px 20px;
+
+            padding: 25px 12px;
+
             text-align: center;
+
             border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.06);
+
             transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+
+            cursor: pointer;
         }
 
         .type-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px) scale(1.03);
+
+            box-shadow:
+                0 15px 30px rgba(42,117,187,0.18);
         }
 
+        /* ICON TIPE POKEMON */
+
         .type-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .type-icon img {
+            width: 70px;
+            height: 70px;
+
+            object-fit: contain;
+
+            transition: 0.3s;
+        }
+
+        .type-card:hover .type-icon img {
+            transform: rotate(8deg) scale(1.15);
         }
 
         .type-card h3 {
             color: #2a75bb;
+
             margin-bottom: 8px;
+
+            font-size: 18px;
         }
 
         .type-card p {
-            font-size: 14px;
+            font-size: 13px;
+
             color: #778398;
+
+            line-height: 1.5;
         }
 
-        /* POKEMON */
+        /* ================= POKEMON ================= */
 
         .pokemon-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+
+            gap: 30px;
         }
 
         .pokemon-card {
             background: white;
-            border-radius: 22px;
-            padding: 30px;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
             text-align: center;
-            box-shadow: 0 12px 35px rgba(30,50,80,0.1);
+
+            box-shadow:
+                0 12px 35px rgba(30,50,80,0.1);
+
             transition: 0.3s;
         }
 
@@ -307,65 +399,109 @@
             transform: translateY(-12px);
         }
 
-        .pokemon-img {
-            width: 150px;
-            height: 150px;
-
-            margin: auto;
-
-            border-radius: 50%;
+        .pokemon-image {
+            width: 100%;
+            height: 270px;
 
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
 
-            font-size: 75px;
-
-            background: #fff2a8;
-            border: 8px solid #ffcb05;
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff4a8,
+                    #fffbe4
+                );
         }
 
-        .pokemon-card:nth-child(2) .pokemon-img {
-            background: #d7efff;
-            border-color: #2a75bb;
+        .pokemon-card:nth-child(2)
+        .pokemon-image {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd0c7,
+                    #fff0ec
+                );
         }
 
-        .pokemon-card:nth-child(3) .pokemon-img {
-            background: #ffe0e0;
-            border-color: #e63946;
+        .pokemon-card:nth-child(3)
+        .pokemon-image {
+            background:
+                linear-gradient(
+                    135deg,
+                    #bde9ff,
+                    #eefaff
+                );
         }
 
-        .pokemon-card h3 {
-            margin-top: 25px;
+        .pokemon-image img {
+            width: 210px;
+            height: 210px;
+
+            object-fit: contain;
+
+            transition: 0.4s;
+
+            filter:
+                drop-shadow(
+                    0 15px 10px
+                    rgba(0,0,0,0.15)
+                );
+        }
+
+        .pokemon-card:hover
+        .pokemon-image img {
+            transform:
+                scale(1.12)
+                translateY(-8px);
+        }
+
+        .pokemon-info {
+            padding: 25px;
+        }
+
+        .pokemon-info h3 {
             font-size: 28px;
-        }
-
-        .pokemon-card p {
-            color: #758196;
-            line-height: 1.7;
-            margin-top: 12px;
         }
 
         .pokemon-type {
             display: inline-block;
+
             margin-top: 10px;
-            padding: 6px 15px;
-            border-radius: 20px;
+
+            padding: 7px 16px;
+
+            border-radius: 30px;
+
             background: #ffcb05;
+
             font-size: 12px;
+
             font-weight: bold;
         }
 
-        /* REGION */
+        .pokemon-info p {
+            color: #758196;
+
+            line-height: 1.7;
+
+            margin-top: 15px;
+        }
+
+        /* ================= REGION ================= */
 
         .region {
             background: #172033;
+
             color: white;
+
             text-align: center;
         }
 
         .region h2 {
             font-size: 50px;
+
             margin-bottom: 20px;
         }
 
@@ -374,35 +510,44 @@
         }
 
         .region p {
-            max-width: 700px;
+            max-width: 750px;
+
             margin: auto;
+
             color: #b9c3d2;
+
             line-height: 1.8;
         }
 
-        /* CTA */
+        /* ================= CTA ================= */
 
         .cta {
             text-align: center;
+
             background: #fff8cf;
         }
 
         .cta h2 {
-            font-size: clamp(40px, 7vw, 70px);
+            font-size: clamp(40px,7vw,70px);
+
             color: #2a4f9b;
         }
 
         .cta p {
             margin: 20px 0 30px;
+
             color: #657286;
         }
 
-        /* FOOTER */
+        /* ================= FOOTER ================= */
 
         footer {
             background: #0f1522;
+
             color: #8994a6;
+
             text-align: center;
+
             padding: 30px;
         }
 
@@ -410,7 +555,14 @@
             color: #ffcb05;
         }
 
-        /* RESPONSIVE */
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 1000px) {
+
+            .type-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
 
         @media(max-width: 900px) {
 
@@ -425,6 +577,7 @@
 
             .pokeball {
                 margin-top: 60px;
+
                 transform: scale(0.8);
             }
 
@@ -433,24 +586,22 @@
             }
 
             .type-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .pokemon-grid {
                 grid-template-columns: 1fr;
             }
-
         }
 
-        @media(max-width: 500px) {
+        @media(max-width: 600px) {
 
             section {
                 padding: 70px 5%;
             }
 
-            .hero {
-                padding-left: 5%;
-                padding-right: 5%;
+            .type-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .hero h1 {
@@ -460,20 +611,22 @@
             .pokeball {
                 transform: scale(0.65);
             }
+        }
+
+        @media(max-width: 400px) {
 
             .type-grid {
                 grid-template-columns: 1fr;
             }
-
         }
-
     </style>
 </head>
 
 
 <body>
 
-    <!-- NAVBAR -->
+
+    <!-- ================= NAVBAR ================= -->
 
     <nav>
 
@@ -499,12 +652,16 @@
                 <a href="#pokemon">Pokémon</a>
             </li>
 
+            <li>
+                <a href="#regions">Regions</a>
+            </li>
+
         </ul>
 
     </nav>
 
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
 
     <section class="hero" id="home">
 
@@ -525,8 +682,8 @@
                 bersama Pokémon mereka.
             </p>
 
-            <a href="#about" class="btn">
-                EXPLORE WORLD
+            <a href="#pokemon" class="btn">
+                EXPLORE POKÉMON
             </a>
 
         </div>
@@ -537,7 +694,7 @@
     </section>
 
 
-    <!-- ABOUT -->
+    <!-- ================= ABOUT ================= -->
 
     <section id="about">
 
@@ -565,21 +722,20 @@
                 <p>
                     Pokémon adalah singkatan dari
                     "Pocket Monsters", sebuah dunia fiksi
-                    yang dihuni oleh berbagai makhluk dengan
-                    kemampuan khusus.
+                    yang dihuni oleh berbagai makhluk
+                    dengan kemampuan khusus.
                 </p>
 
                 <p>
                     Pokémon dapat ditemukan di berbagai
                     lingkungan seperti hutan, laut, gunung,
-                    kota, dan tempat-tempat lainnya.
+                    kota, dan berbagai tempat lainnya.
                 </p>
 
                 <p>
-                    Dalam dunia Pokémon, seorang Trainer
-                    dapat menangkap dan melatih Pokémon
-                    untuk menjadi partner dalam petualangan
-                    dan pertarungan.
+                    Para Trainer dapat menangkap dan melatih
+                    Pokémon untuk menjadi partner dalam
+                    perjalanan dan pertarungan.
                 </p>
 
             </div>
@@ -587,22 +743,24 @@
 
             <div class="info-box">
 
-                <h3>🔎 Fakta Pokémon</h3>
+                <h3>
+                    🔎 Fakta Pokémon
+                </h3>
 
                 <ul>
 
                     <li>
-                        ⚡ Pokémon pertama yang terkenal:
+                        ⚡ Pokémon terkenal:
                         Pikachu
                     </li>
 
                     <li>
-                        🔴 Alat untuk menangkap Pokémon:
+                        🔴 Alat menangkap Pokémon:
                         Poké Ball
                     </li>
 
                     <li>
-                        🏆 Trainer dapat mengikuti:
+                        ⚔️ Trainer dapat melakukan:
                         Pokémon Battle
                     </li>
 
@@ -612,7 +770,7 @@
 
                     <li>
                         ⭐ Setiap Pokémon memiliki kemampuan
-                        yang berbeda
+                        berbeda
                     </li>
 
                 </ul>
@@ -624,7 +782,7 @@
     </section>
 
 
-    <!-- TYPES -->
+    <!-- ================= TYPES ================= -->
 
     <section class="types" id="types">
 
@@ -635,7 +793,7 @@
             </h2>
 
             <p>
-                Pokémon memiliki berbagai macam tipe
+                Kenali berbagai tipe Pokémon
             </p>
 
         </div>
@@ -644,76 +802,407 @@
         <div class="type-grid">
 
 
+            <!-- NORMAL -->
+
             <div class="type-card">
 
                 <div class="type-icon">
-                    ⚡
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/1.png"
+                        alt="Normal Type"
+                    >
+
                 </div>
 
-                <h3>Electric</h3>
+                <h3>Normal</h3>
 
                 <p>
-                    Menggunakan kekuatan listrik
-                    untuk menyerang lawan.
+                    Tipe dasar Pokémon.
                 </p>
 
             </div>
 
 
+            <!-- FIGHTING -->
+
             <div class="type-card">
 
                 <div class="type-icon">
-                    🔥
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/2.png"
+                        alt="Fighting Type"
+                    >
+
+                </div>
+
+                <h3>Fighting</h3>
+
+                <p>
+                    Mengandalkan kekuatan fisik.
+                </p>
+
+            </div>
+
+
+            <!-- FLYING -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/3.png"
+                        alt="Flying Type"
+                    >
+
+                </div>
+
+                <h3>Flying</h3>
+
+                <p>
+                    Memiliki kemampuan terbang.
+                </p>
+
+            </div>
+
+
+            <!-- POISON -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/4.png"
+                        alt="Poison Type"
+                    >
+
+                </div>
+
+                <h3>Poison</h3>
+
+                <p>
+                    Menggunakan racun sebagai kekuatan.
+                </p>
+
+            </div>
+
+
+            <!-- GROUND -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/5.png"
+                        alt="Ground Type"
+                    >
+
+                </div>
+
+                <h3>Ground</h3>
+
+                <p>
+                    Berhubungan dengan tanah.
+                </p>
+
+            </div>
+
+
+            <!-- ROCK -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/6.png"
+                        alt="Rock Type"
+                    >
+
+                </div>
+
+                <h3>Rock</h3>
+
+                <p>
+                    Memiliki pertahanan kuat.
+                </p>
+
+            </div>
+
+
+            <!-- BUG -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/7.png"
+                        alt="Bug Type"
+                    >
+
+                </div>
+
+                <h3>Bug</h3>
+
+                <p>
+                    Terinspirasi dari serangga.
+                </p>
+
+            </div>
+
+
+            <!-- GHOST -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/8.png"
+                        alt="Ghost Type"
+                    >
+
+                </div>
+
+                <h3>Ghost</h3>
+
+                <p>
+                    Memiliki kemampuan misterius.
+                </p>
+
+            </div>
+
+
+            <!-- STEEL -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/9.png"
+                        alt="Steel Type"
+                    >
+
+                </div>
+
+                <h3>Steel</h3>
+
+                <p>
+                    Memiliki pertahanan tinggi.
+                </p>
+
+            </div>
+
+
+            <!-- FIRE -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/10.png"
+                        alt="Fire Type"
+                    >
+
                 </div>
 
                 <h3>Fire</h3>
 
                 <p>
-                    Pokémon dengan kemampuan
-                    berbasis api dan panas.
+                    Menggunakan kekuatan api.
                 </p>
 
             </div>
 
 
+            <!-- WATER -->
+
             <div class="type-card">
 
                 <div class="type-icon">
-                    💧
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/11.png"
+                        alt="Water Type"
+                    >
+
                 </div>
 
                 <h3>Water</h3>
 
                 <p>
-                    Pokémon yang memiliki
-                    kemampuan berbasis air.
+                    Menggunakan kekuatan air.
                 </p>
 
             </div>
 
 
+            <!-- GRASS -->
+
             <div class="type-card">
 
                 <div class="type-icon">
-                    🌿
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/12.png"
+                        alt="Grass Type"
+                    >
+
                 </div>
 
                 <h3>Grass</h3>
 
                 <p>
-                    Menggunakan kekuatan tumbuhan
-                    dan alam.
+                    Berhubungan dengan alam.
                 </p>
 
             </div>
 
+
+            <!-- ELECTRIC -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/13.png"
+                        alt="Electric Type"
+                    >
+
+                </div>
+
+                <h3>Electric</h3>
+
+                <p>
+                    Menggunakan kekuatan listrik.
+                </p>
+
+            </div>
+
+
+            <!-- PSYCHIC -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/14.png"
+                        alt="Psychic Type"
+                    >
+
+                </div>
+
+                <h3>Psychic</h3>
+
+                <p>
+                    Menggunakan kekuatan pikiran.
+                </p>
+
+            </div>
+
+
+            <!-- ICE -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/15.png"
+                        alt="Ice Type"
+                    >
+
+                </div>
+
+                <h3>Ice</h3>
+
+                <p>
+                    Menggunakan kekuatan es.
+                </p>
+
+            </div>
+
+
+            <!-- DRAGON -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/16.png"
+                        alt="Dragon Type"
+                    >
+
+                </div>
+
+                <h3>Dragon</h3>
+
+                <p>
+                    Memiliki kekuatan naga.
+                </p>
+
+            </div>
+
+
+            <!-- DARK -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/17.png"
+                        alt="Dark Type"
+                    >
+
+                </div>
+
+                <h3>Dark</h3>
+
+                <p>
+                    Menggunakan kekuatan kegelapan.
+                </p>
+
+            </div>
+
+
+            <!-- FAIRY -->
+
+            <div class="type-card">
+
+                <div class="type-icon">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-viii/sword-shield/18.png"
+                        alt="Fairy Type"
+                    >
+
+                </div>
+
+                <h3>Fairy</h3>
+
+                <p>
+                    Memiliki kekuatan magis.
+                </p>
+
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- POPULAR POKEMON -->
+    <!-- ================= POPULAR POKEMON ================= -->
 
     <section id="pokemon">
 
@@ -733,65 +1222,101 @@
         <div class="pokemon-grid">
 
 
+            <!-- PIKACHU -->
+
             <div class="pokemon-card">
 
-                <div class="pokemon-img">
-                    ⚡
+                <div class="pokemon-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+                        alt="Pikachu"
+                    >
+
                 </div>
 
-                <h3>Pikachu</h3>
+                <div class="pokemon-info">
 
-                <span class="pokemon-type">
-                    ELECTRIC
-                </span>
+                    <h3>
+                        Pikachu
+                    </h3>
 
-                <p>
-                    Pikachu adalah Pokémon tipe Electric
-                    yang terkenal dengan kemampuan
-                    listriknya.
-                </p>
+                    <span class="pokemon-type">
+                        ELECTRIC
+                    </span>
+
+                    <p>
+                        Pokémon tipe Electric yang terkenal
+                        dengan kemampuan listriknya.
+                    </p>
+
+                </div>
 
             </div>
 
 
+            <!-- CHARIZARD -->
+
             <div class="pokemon-card">
 
-                <div class="pokemon-img">
-                    🔥
+                <div class="pokemon-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+                        alt="Charizard"
+                    >
+
                 </div>
 
-                <h3>Charizard</h3>
+                <div class="pokemon-info">
 
-                <span class="pokemon-type">
-                    FIRE / FLYING
-                </span>
+                    <h3>
+                        Charizard
+                    </h3>
 
-                <p>
-                    Charizard merupakan Pokémon yang
-                    memiliki bentuk seperti naga dan
-                    dapat terbang.
-                </p>
+                    <span class="pokemon-type">
+                        FIRE / FLYING
+                    </span>
+
+                    <p>
+                        Pokémon yang memiliki kemampuan
+                        terbang dan menggunakan kekuatan api.
+                    </p>
+
+                </div>
 
             </div>
 
 
+            <!-- SQUIRTLE -->
+
             <div class="pokemon-card">
 
-                <div class="pokemon-img">
-                    💧
+                <div class="pokemon-image">
+
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png"
+                        alt="Squirtle"
+                    >
+
                 </div>
 
-                <h3>Squirtle</h3>
+                <div class="pokemon-info">
 
-                <span class="pokemon-type">
-                    WATER
-                </span>
+                    <h3>
+                        Squirtle
+                    </h3>
 
-                <p>
-                    Squirtle merupakan Pokémon tipe
-                    Water yang menggunakan cangkangnya
-                    untuk melindungi diri.
-                </p>
+                    <span class="pokemon-type">
+                        WATER
+                    </span>
+
+                    <p>
+                        Pokémon tipe Water yang memiliki
+                        cangkang sebagai perlindungan.
+                    </p>
+
+                </div>
 
             </div>
 
@@ -801,26 +1326,26 @@
     </section>
 
 
-    <!-- REGION -->
+    <!-- ================= REGIONS ================= -->
 
-    <section class="region">
+    <section class="region" id="regions">
 
         <h2>
             EXPLORE THE <span>REGIONS</span>
         </h2>
 
         <p>
-            Dunia Pokémon memiliki banyak region dengan
-            lingkungan, Pokémon, dan cerita yang berbeda.
-            Beberapa region terkenal antara lain Kanto,
-            Johto, Hoenn, Sinnoh, Unova, Kalos, Alola,
-            Galar, dan Paldea.
+            Dunia Pokémon memiliki berbagai region dengan
+            lingkungan, Pokémon, Trainer, dan cerita yang
+            berbeda. Beberapa region terkenal antara lain
+            Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos,
+            Alola, Galar, dan Paldea.
         </p>
 
     </section>
 
 
-    <!-- CTA -->
+    <!-- ================= CTA ================= -->
 
     <section class="cta">
 
@@ -833,19 +1358,21 @@
             Pokémon di dunia yang penuh misteri.
         </p>
 
-        <a href="#home" class="btn">
+        <a href="#pokemon" class="btn">
             START ADVENTURE
         </a>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
         <p>
-            © 2026 <strong>AHNAF</strong> |
+            © 2026
+            <strong>AHNAF</strong>
+            |
             Pokémon Fan Website
         </p>
 
