@@ -1,0 +1,857 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pokémon World | AHNAF</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f8fc;
+            color: #1c2738;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffcb05;
+            text-shadow: 2px 2px #2a4f9b;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1c2738;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #e63946;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            padding: 140px 8% 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background:
+                radial-gradient(circle at 80% 20%, #ffdd4a, transparent 25%),
+                linear-gradient(135deg, #fffef2, #dff2ff);
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero-text small {
+            color: #2a75bb;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            margin-top: 15px;
+            font-size: clamp(55px, 9vw, 100px);
+            line-height: 0.9;
+            color: #2a4f9b;
+            text-shadow: 4px 4px #ffcb05;
+        }
+
+        .hero h1 span {
+            color: #e63946;
+        }
+
+        .hero p {
+            margin: 30px 0;
+            color: #657286;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 28px;
+            background: #ffcb05;
+            color: #18202d;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(255,203,5,0.35);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* POKEBALL */
+
+        .pokeball {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #e63946 0%,
+                    #e63946 46%,
+                    #1c2738 46%,
+                    #1c2738 54%,
+                    white 54%,
+                    white 100%
+                );
+
+            border: 15px solid #1c2738;
+
+            position: relative;
+
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+
+            animation: floating 3s infinite ease-in-out;
+        }
+
+        .pokeball::before {
+            content: "";
+
+            position: absolute;
+
+            width: 90px;
+            height: 90px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            border: 12px solid #1c2738;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+        }
+
+        /* GENERAL SECTION */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .title h2 {
+            font-size: 45px;
+            color: #2a4f9b;
+        }
+
+        .title span {
+            color: #e63946;
+        }
+
+        .title p {
+            margin-top: 10px;
+            color: #788598;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 40px;
+            color: #2a4f9b;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            color: #68768a;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(40,70,100,0.1);
+        }
+
+        .info-box h3 {
+            color: #e63946;
+            margin-bottom: 15px;
+        }
+
+        .info-box ul {
+            list-style: none;
+        }
+
+        .info-box li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* TYPES */
+
+        .types {
+            background: #eef5fb;
+        }
+
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .type-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 18px;
+            transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .type-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .type-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .type-card h3 {
+            color: #2a75bb;
+            margin-bottom: 8px;
+        }
+
+        .type-card p {
+            font-size: 14px;
+            color: #778398;
+        }
+
+        /* POKEMON */
+
+        .pokemon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .pokemon-card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 12px 35px rgba(30,50,80,0.1);
+            transition: 0.3s;
+        }
+
+        .pokemon-card:hover {
+            transform: translateY(-12px);
+        }
+
+        .pokemon-img {
+            width: 150px;
+            height: 150px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 75px;
+
+            background: #fff2a8;
+            border: 8px solid #ffcb05;
+        }
+
+        .pokemon-card:nth-child(2) .pokemon-img {
+            background: #d7efff;
+            border-color: #2a75bb;
+        }
+
+        .pokemon-card:nth-child(3) .pokemon-img {
+            background: #ffe0e0;
+            border-color: #e63946;
+        }
+
+        .pokemon-card h3 {
+            margin-top: 25px;
+            font-size: 28px;
+        }
+
+        .pokemon-card p {
+            color: #758196;
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        .pokemon-type {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 15px;
+            border-radius: 20px;
+            background: #ffcb05;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* REGION */
+
+        .region {
+            background: #172033;
+            color: white;
+            text-align: center;
+        }
+
+        .region h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .region h2 span {
+            color: #ffcb05;
+        }
+
+        .region p {
+            max-width: 700px;
+            margin: auto;
+            color: #b9c3d2;
+            line-height: 1.8;
+        }
+
+        /* CTA */
+
+        .cta {
+            text-align: center;
+            background: #fff8cf;
+        }
+
+        .cta h2 {
+            font-size: clamp(40px, 7vw, 70px);
+            color: #2a4f9b;
+        }
+
+        .cta p {
+            margin: 20px 0 30px;
+            color: #657286;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0f1522;
+            color: #8994a6;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer strong {
+            color: #ffcb05;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 900px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pokeball {
+                margin-top: 60px;
+                transform: scale(0.8);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .type-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pokemon-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 500px) {
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .pokeball {
+                transform: scale(0.65);
+            }
+
+            .type-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            AHNAF
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#types">Types</a>
+            </li>
+
+            <li>
+                <a href="#pokemon">Pokémon</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <small>
+                WELCOME TO THE WORLD OF
+            </small>
+
+            <h1>
+                POKÉ<span>MON</span>
+            </h1>
+
+            <p>
+                Pokémon adalah makhluk misterius yang memiliki
+                berbagai kemampuan unik. Para Trainer menjelajahi
+                dunia untuk menangkap, melatih, dan bertarung
+                bersama Pokémon mereka.
+            </p>
+
+            <a href="#about" class="btn">
+                EXPLORE WORLD
+            </a>
+
+        </div>
+
+
+        <div class="pokeball"></div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="title">
+
+            <h2>
+                TENTANG <span>POKÉMON</span>
+            </h2>
+
+            <p>
+                Kenali dunia Pokémon lebih dekat
+            </p>
+
+        </div>
+
+
+        <div class="about">
+
+            <div>
+
+                <h2>
+                    Apa itu Pokémon?
+                </h2>
+
+                <p>
+                    Pokémon adalah singkatan dari
+                    "Pocket Monsters", sebuah dunia fiksi
+                    yang dihuni oleh berbagai makhluk dengan
+                    kemampuan khusus.
+                </p>
+
+                <p>
+                    Pokémon dapat ditemukan di berbagai
+                    lingkungan seperti hutan, laut, gunung,
+                    kota, dan tempat-tempat lainnya.
+                </p>
+
+                <p>
+                    Dalam dunia Pokémon, seorang Trainer
+                    dapat menangkap dan melatih Pokémon
+                    untuk menjadi partner dalam petualangan
+                    dan pertarungan.
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <h3>🔎 Fakta Pokémon</h3>
+
+                <ul>
+
+                    <li>
+                        ⚡ Pokémon pertama yang terkenal:
+                        Pikachu
+                    </li>
+
+                    <li>
+                        🔴 Alat untuk menangkap Pokémon:
+                        Poké Ball
+                    </li>
+
+                    <li>
+                        🏆 Trainer dapat mengikuti:
+                        Pokémon Battle
+                    </li>
+
+                    <li>
+                        🌎 Pokémon memiliki banyak region
+                    </li>
+
+                    <li>
+                        ⭐ Setiap Pokémon memiliki kemampuan
+                        yang berbeda
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TYPES -->
+
+    <section class="types" id="types">
+
+        <div class="title">
+
+            <h2>
+                POKÉMON <span>TYPES</span>
+            </h2>
+
+            <p>
+                Pokémon memiliki berbagai macam tipe
+            </p>
+
+        </div>
+
+
+        <div class="type-grid">
+
+
+            <div class="type-card">
+
+                <div class="type-icon">
+                    ⚡
+                </div>
+
+                <h3>Electric</h3>
+
+                <p>
+                    Menggunakan kekuatan listrik
+                    untuk menyerang lawan.
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <div class="type-icon">
+                    🔥
+                </div>
+
+                <h3>Fire</h3>
+
+                <p>
+                    Pokémon dengan kemampuan
+                    berbasis api dan panas.
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <div class="type-icon">
+                    💧
+                </div>
+
+                <h3>Water</h3>
+
+                <p>
+                    Pokémon yang memiliki
+                    kemampuan berbasis air.
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <div class="type-icon">
+                    🌿
+                </div>
+
+                <h3>Grass</h3>
+
+                <p>
+                    Menggunakan kekuatan tumbuhan
+                    dan alam.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- POPULAR POKEMON -->
+
+    <section id="pokemon">
+
+        <div class="title">
+
+            <h2>
+                POPULAR <span>POKÉMON</span>
+            </h2>
+
+            <p>
+                Beberapa Pokémon yang paling dikenal
+            </p>
+
+        </div>
+
+
+        <div class="pokemon-grid">
+
+
+            <div class="pokemon-card">
+
+                <div class="pokemon-img">
+                    ⚡
+                </div>
+
+                <h3>Pikachu</h3>
+
+                <span class="pokemon-type">
+                    ELECTRIC
+                </span>
+
+                <p>
+                    Pikachu adalah Pokémon tipe Electric
+                    yang terkenal dengan kemampuan
+                    listriknya.
+                </p>
+
+            </div>
+
+
+            <div class="pokemon-card">
+
+                <div class="pokemon-img">
+                    🔥
+                </div>
+
+                <h3>Charizard</h3>
+
+                <span class="pokemon-type">
+                    FIRE / FLYING
+                </span>
+
+                <p>
+                    Charizard merupakan Pokémon yang
+                    memiliki bentuk seperti naga dan
+                    dapat terbang.
+                </p>
+
+            </div>
+
+
+            <div class="pokemon-card">
+
+                <div class="pokemon-img">
+                    💧
+                </div>
+
+                <h3>Squirtle</h3>
+
+                <span class="pokemon-type">
+                    WATER
+                </span>
+
+                <p>
+                    Squirtle merupakan Pokémon tipe
+                    Water yang menggunakan cangkangnya
+                    untuk melindungi diri.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- REGION -->
+
+    <section class="region">
+
+        <h2>
+            EXPLORE THE <span>REGIONS</span>
+        </h2>
+
+        <p>
+            Dunia Pokémon memiliki banyak region dengan
+            lingkungan, Pokémon, dan cerita yang berbeda.
+            Beberapa region terkenal antara lain Kanto,
+            Johto, Hoenn, Sinnoh, Unova, Kalos, Alola,
+            Galar, dan Paldea.
+        </p>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <h2>
+            GOTTA CATCH 'EM ALL!
+        </h2>
+
+        <p>
+            Mulai petualanganmu dan kenali lebih banyak
+            Pokémon di dunia yang penuh misteri.
+        </p>
+
+        <a href="#home" class="btn">
+            START ADVENTURE
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 <strong>AHNAF</strong> |
+            Pokémon Fan Website
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
+
